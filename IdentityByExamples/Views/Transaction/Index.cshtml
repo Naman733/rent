@@ -1,0 +1,47 @@
+﻿@model IEnumerable<IdentityByExamples.Models.Transaction>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+       
+       
+         @foreach (var item in Model)
+         {
+
+            <h2>YOUR PROPERTY</h2>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">USER LISTING</h5>
+                    <p class="card-text"> @Html.DisplayFor(modelItem => item.RENT)</p>
+                    <p class="card-text"> @Html.DisplayFor(modelItem => item.ADDRESS)</p>
+                    <p class="card-text"> @Html.DisplayFor(modelItem => item.ROOM)</p>
+                    <p class="card-text"> @Html.DisplayFor(modelItem => item.BATHROOM)</p>
+                </div>
+            </div>
+              
+                  
+                            <form asp-action="Delete" asp-route-id="@item.TransactionId">
+                                <div class="btn-group btn-group-sm">
+                                    <a asp-action="AddOrEdit" asp-route-id="@item.TransactionId" class="btn btn-warning">EDIT
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure to delete this record?')">
+                                        <i class="far fa-trash-alt"></i>DELETE
+                                    </button>
+                                   
+                                </div>
+                            </form>
+                    
+                }
+           
+       
+       
+    </div>
+   
+</div>
+
